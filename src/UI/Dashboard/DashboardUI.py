@@ -1,5 +1,6 @@
 import customtkinter
 
+from src.QRTools.QRDaemon import QRDaemon
 from src.UI.Dashboard.MembersFrame import MembersFrame
 
 
@@ -29,6 +30,14 @@ class DashboardUI:
         self.manual_sign_in = ManualSignIn(member_section=self.parent.member_section,
                                            master=parent.tab(self.ID))
         self.manual_sign_in.grid(row=0,column=1,pady=10,padx=10, sticky="new")
+
+        self.qrb = customtkinter.CTkButton(master=parent.tab(self.ID),
+                                                    text="QR",
+                                                    fg_color="#D63D3D",
+                                                    bg_color="transparent",
+                                                    hover_color="#BC3535",
+                                                    command=self.launch_qr)
+        self.qrb.grid(row=1,column=1,padx=10,pady=10)
         # self.bob = customtkinter.CTkEntry(master=parent.tab(self.ID))
         # self.bob.grid(row=0,column=1,sticky="n")
         #
@@ -36,6 +45,9 @@ class DashboardUI:
         # self.submit.grid(row=2,column=1)
         # self.rem = customtkinter.CTkButton(master=parent.tab(self.ID), command=self.remove_bit)
         # self.rem.grid(row=3, column=1)
+
+    def launch_qr(self):
+        qr_daemon = QRDaemon(member_list=self.parent.member_section)
 
     def add_bit(self):
         id = self.bob.get()

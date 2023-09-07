@@ -12,9 +12,13 @@ class MembersFrame(customtkinter.CTkScrollableFrame):
         super().__init__(master, **kwargs)
 
         self.member_list: [MemberWidget] = []
-        self.attendance_map: (int, datetime.time) = {}
+        self.attendance_map: (str, datetime.time) = {}
 
         self.grid_columnconfigure(0, weight=1)
+
+    def check_signed_in(self, id: str):
+        return not self.attendance_map.get(id) is None
+
 
     def sign_in(self, id: int):
         name: str
