@@ -1,5 +1,6 @@
 import datetime
 import json
+import os
 import time
 
 import customtkinter
@@ -8,6 +9,15 @@ from src.UI.Dashboard.MemberWidget import MemberWidget
 
 
 class MembersFrame(customtkinter.CTkScrollableFrame):
+    # Get the directory of the currently executing script (main.py)
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+
+    # Navigate up two levels to the 'src' directory
+    src_dir = os.path.abspath(os.path.join(script_dir, '..', '..'))
+
+    # Specify the path to the JSON file
+    JSON_PATH = os.path.join(src_dir, 'Data', 'MemberList.json')
+
     def __init__(self, master, **kwargs):
         super().__init__(master, **kwargs)
 
@@ -22,7 +32,7 @@ class MembersFrame(customtkinter.CTkScrollableFrame):
 
     def sign_in(self, id: int):
         name: str
-        with open("/Users/ishaan/Documents/Projects/QRAttendanceV2/src/Data/MemberList.json") as f:
+        with open(MembersFrame.JSON_PATH) as f:
             temp = json.load(f)
             name = temp[id]["name"]
         temp_memwidget = MemberWidget(master=self, id=id, name=name)
@@ -38,12 +48,12 @@ class MembersFrame(customtkinter.CTkScrollableFrame):
                 time_diff = int((time.time() - self.attendance_map[id]) / 60)
                 temp = {}
 
-                with open("/Users/ishaan/Documents/Projects/QRAttendanceV2/src/Data/MemberList.json") as f:
+                with open(MembersFrame.JSON_PATH) as f:
                     temp = json.load(f)
 
                 temp[id]["attendance"][str(datetime.date.today())] = str(time_diff)
 
-                with open("/Users/ishaan/Documents/Projects/QRAttendanceV2/src/Data/MemberList.json", "w") as f:
+                with open(MembersFrame.JSON_PATH) as f:
                     json.dump(temp, f, indent=4)
 
     def sign_out_all(self):

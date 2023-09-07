@@ -2,35 +2,24 @@ import json
 
 import customtkinter
 
+from src.UI.Dashboard import DashboardUI
+from src.UI.Dashboard.MembersFrame import MembersFrame
+from src.UI.MemberManagement.DataGenerationFrame import DataGenerationFrame
+from src.UI.MemberManagement.MemberLookupFrame import MemberLookupFrame
+
 
 class MemberManagementUI:
-	def __init__(self, parent: customtkinter.CTkTabview):
-		self.ID = "Manage Members"
-		self.parent = parent
-		self.parent.tab(self.ID).grid_columnconfigure(index=(0, 1), weight=1)
-		self.parent.tab(self.ID).grid_rowconfigure(index=(0, 1), weight=1)
+    def __init__(self, parent: customtkinter.CTkTabview):
+        self.ID = "Manage Members"
+        self.parent = parent
+        self.parent.tab(self.ID).grid_columnconfigure(index=(0, 1), weight=1)
+        self.parent.tab(self.ID).rowconfigure(index=0, weight=1)
 
-		self.getFromFileText = customtkinter.CTkTextbox(master=parent.tab(self.ID))
-		self.getFromFileText.grid(row=0, column=0, padx=10, pady=10, sticky="nsew")
-		self.getFromFile = customtkinter.CTkButton(master=parent.tab(self.ID), text="Generate JSON",
-												   command=self.generate_json)
-		self.getFromFile.grid(row=1, column=0, padx=10, pady=10, sticky="n")
+        self.datagen_frame = DataGenerationFrame(self.parent.tab(self.ID))
+        self.datagen_frame.grid(row=0, column=0, sticky="nsew", padx=10, pady=10)
 
-	def generate_json(self):
-		f = self.getFromFileText.get("0.0", "end")
-		self.getFromFileText.delete("0.0", "end")
+        self.member_lookup_frame = MemberLookupFrame(self.parent.tab(self.ID))
+        self.member_lookup_frame.grid(row=0,column=1,sticky="nsew", padx=10, pady=10)
 
-		temp = [s.split("\t") for s in f.split("\n")]
 
-		jsonf = {}
-		with open("/Users/ishaan/Documents/Projects/QRAttendanceV2/src/Data/MemberList.json") as f:
-			jsonf = json.load(f)
 
-		for bit in temp:
-			jsonf[bit[0]] = {
-				"name": bit[1],
-				"attendance": {}
-			}
-
-		with open("/Users/ishaan/Documents/Projects/QRAttendanceV2/src/Data/MemberList.json", "w") as f:
-			json.dump(jsonf, f, indent=4)

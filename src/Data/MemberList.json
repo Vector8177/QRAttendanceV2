@@ -4,5 +4,37 @@
         "attendance": {
             "2023-09-06": "0"
         }
+    },
+    "1": {
+        "name": "Ishaan",
+        "attendance": {}
+    },
+    "2": {
+        "name": "Gene",
+        "attendance": {}
+    },
+    "3": {
+        "name": "Banana",
+        "attendance": {}
+    },
+    "4": {
+        "name": "Onion",
+        "attendance": {}
+    },
+    "5": {
+        "name": "Mason",
+        "attendance": {}
+    },
+    "6": {
+        "name": "Bob",
+        "attendance": {}
+    },
+    "7": {
+        "name": "Joe",
+        "attendance": {}
+    },
+    "8": {
+        "name": "Bong",
+        "attendance": {}
     }
 }

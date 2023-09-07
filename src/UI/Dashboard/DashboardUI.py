@@ -27,19 +27,19 @@ class DashboardUI:
                                                     bg_color="transparent",
                                                     hover_color="#BC3535",
                                                     command=self.parent.member_section.sign_out_all)
-        self.sign_out_all.grid(row=3,column=0,sticky="sew", pady=(10,10), padx=15)
+        self.sign_out_all.grid(row=3, column=0, sticky="sew", pady=(10, 10), padx=15)
 
         self.manual_sign_in = ManualSignIn(member_section=self.parent.member_section,
                                            master=parent.tab(self.ID))
-        self.manual_sign_in.grid(row=0,column=1,pady=10,padx=10, sticky="new")
+        self.manual_sign_in.grid(row=0, column=1, pady=10, padx=10, sticky="new")
 
         self.qrb = customtkinter.CTkButton(master=parent.tab(self.ID),
-                                                    text="QR",
-                                                    fg_color="#D63D3D",
-                                                    bg_color="transparent",
-                                                    hover_color="#BC3535",
-                                                    command=self.launch_qr)
-        self.qrb.grid(row=1,column=1,padx=10,pady=10)
+                                           text="QR",
+                                           fg_color="#D63D3D",
+                                           bg_color="transparent",
+                                           hover_color="#BC3535",
+                                           command=self.launch_qr)
+        self.qrb.grid(row=1, column=1, padx=10, pady=10)
         # self.bob = customtkinter.CTkEntry(master=parent.tab(self.ID))
         # self.bob.grid(row=0,column=1,sticky="n")
         #
@@ -66,28 +66,30 @@ class DashboardUI:
         # parent.label = customtkinter.CTkLabel(master=parent.tab(self.ID))
         # parent.label.grid(row=0, column=0, padx=0, pady=0)
 
+
 class ManualSignIn(customtkinter.CTkFrame):
     def __init__(self, member_section, master, **kwargs):
         super().__init__(master, **kwargs)
-        self.grid_columnconfigure(0,weight=1)
+        self.grid_columnconfigure(0, weight=1)
 
         self.id_entry_label = customtkinter.CTkLabel(master=self, text="Enter ID: ")
-        self.id_entry_label.grid(row=0,column=0,padx=25,pady=(5,15))
+        self.id_entry_label.grid(row=0, column=0, padx=25, pady=(5, 15))
 
         self.member_section = member_section
 
         self.id_entry = customtkinter.CTkEntry(master=self)
-        self.id_entry.grid(row=1,column=0,padx=25)
+        self.id_entry.grid(row=1, column=0, padx=25)
 
         self.submit_button = customtkinter.CTkButton(master=self,
-                                                    text="Sign In",
-                                                    fg_color="#36C170",
-                                                    bg_color="transparent",
-                                                    hover_color="#30A15F",
-                                                    command=self.submit_event)
-        self.submit_button.grid(row=2,column=0,padx=25,pady=(10,15))
+                                                     text="Sign In",
+                                                     fg_color="#36C170",
+                                                     bg_color="transparent",
+                                                     hover_color="#30A15F",
+                                                     command=self.submit_event)
+        self.submit_button.grid(row=2, column=0, padx=25, pady=(10, 15))
+
     def submit_event(self):
         id = self.id_entry.get()
-        self.id_entry.delete(0,"end")
+        self.id_entry.delete(0, "end")
 
         self.member_section.sign_in(id)

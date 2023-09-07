@@ -18,7 +18,7 @@ class QRDaemon:
             if self.member_list.check_signed_in(data):
                 self.member_list.sign_out(data)
             else:
-                with open("/Users/ishaan/Documents/Projects/QRAttendanceV2/src/Data/MemberList.json") as f:
+                with open(MembersFrame.JSON_PATH) as f:
                     temp = json.load(f)
                     if not temp.get(data) is None:
                         self.member_list.sign_in(data)
