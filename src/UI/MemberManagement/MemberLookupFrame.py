@@ -2,6 +2,7 @@ import json
 
 import customtkinter
 
+from src.Constants import Constants
 from src.UI.Dashboard.MembersFrame import MembersFrame
 
 
@@ -31,9 +32,9 @@ class MemberIDLookupEntry(customtkinter.CTkFrame):
 
         self.submit_button = customtkinter.CTkButton(master=self,
                                                      text="Lookup Member",
-                                                     fg_color="#13BF5A",
+                                                     fg_color=Constants.BLUE_COLOR,
                                                      bg_color="transparent",
-                                                     hover_color="#0E8C42",
+                                                     hover_color=Constants.BLUE_HOVER_COLOR,
                                                      command=self.submit_event)
         self.submit_button.grid(row=2, column=0, padx=25, pady=(10, 15))
 
@@ -43,7 +44,7 @@ class MemberIDLookupEntry(customtkinter.CTkFrame):
 
         jsondat = {}
         name = ""
-        with open(MembersFrame.JSON_PATH) as f:
+        with open(Constants.JSON_PATH) as f:
             temp = json.load(f)
             name = temp[id_mem]["name"]
             jsondat = temp[id_mem]["attendance"]

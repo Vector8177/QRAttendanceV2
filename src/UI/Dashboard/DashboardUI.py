@@ -1,5 +1,6 @@
 import customtkinter
 
+from src.Constants import Constants
 from src.QRTools.QRDaemon import QRDaemon
 from src.UI.Dashboard.MembersFrame import MembersFrame
 
@@ -82,9 +83,9 @@ class ManualSignIn(customtkinter.CTkFrame):
 
         self.submit_button = customtkinter.CTkButton(master=self,
                                                      text="Sign In",
-                                                     fg_color="#36C170",
+                                                     fg_color=Constants.GREEN_COLOR,
                                                      bg_color="transparent",
-                                                     hover_color="#30A15F",
+                                                     hover_color=Constants.GREEN_HOVER_COLOR,
                                                      command=self.submit_event)
         self.submit_button.grid(row=2, column=0, padx=25, pady=(10, 15))
 
