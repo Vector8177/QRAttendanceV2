@@ -1,6 +1,6 @@
 import customtkinter
 
-from UI.Dashboard.DashboardUI import DashboardUI
+from src.UI.Dashboard.DashboardUI import DashboardUI
 
 
 class HomeTabView(customtkinter.CTkTabview):

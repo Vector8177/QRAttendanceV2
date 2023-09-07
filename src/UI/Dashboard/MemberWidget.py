@@ -7,6 +7,7 @@ class MemberWidget(customtkinter.CTkFrame):
 
         self.id = id
         self.name = name
+        self.master = master
 
         self.grid_columnconfigure((0, 1, 2), weight=1)
         self.name_label = customtkinter.CTkLabel(master=self, text=self.name,bg_color="transparent")
@@ -27,4 +28,4 @@ class MemberWidget(customtkinter.CTkFrame):
         return self.name
 
     def button_event(self):
-        print("Signout Commencing")
+        self.master.sign_out(self.id)

@@ -1,8 +1,6 @@
 from ctypes import windll
 
-import customtkinter
-
-from UI.UIParent import App
+from src.UI.UIParent import App
 
 
 
