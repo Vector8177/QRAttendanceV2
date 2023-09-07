@@ -17,8 +17,8 @@ class MembersFrame(customtkinter.CTkScrollableFrame):
         self.grid_columnconfigure(0, weight=1)
 
     def check_signed_in(self, id: str):
+        a = self.attendance_map.get(id)
         return not self.attendance_map.get(id) is None
-
 
     def sign_in(self, id: int):
         name: str

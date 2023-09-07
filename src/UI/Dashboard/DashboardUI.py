@@ -3,6 +3,8 @@ import customtkinter
 from src.QRTools.QRDaemon import QRDaemon
 from src.UI.Dashboard.MembersFrame import MembersFrame
 
+import threading
+
 
 class DashboardUI:
     def __init__(self, parent: customtkinter.CTkTabview):
@@ -48,6 +50,8 @@ class DashboardUI:
 
     def launch_qr(self):
         qr_daemon = QRDaemon(member_list=self.parent.member_section)
+        qr_daemon_thread = threading.Thread(target=qr_daemon.main)
+        qr_daemon_thread.start()
 
     def add_bit(self):
         id = self.bob.get()

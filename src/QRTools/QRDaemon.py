@@ -11,8 +11,6 @@ class QRDaemon:
     def __init__(self, member_list: MembersFrame):
         self.member_list = member_list
 
-        self.main()
-
     # Function to decode and display QR code
     def read_qr_code(self, image):
         # Decode QR code
@@ -22,8 +20,8 @@ class QRDaemon:
             # Extract QR code data
             qr_data = obj.data.decode('utf-8')
 
-            if (self.member_list.check_signed_in(qr_data)):
-                self.member_list.sign_in(qr_data)
+            if self.member_list.check_signed_in(qr_data):
+                self.member_list.sign_out(qr_data)
             else:
                 with open("src/Data/MemberList.json") as f:
                     temp = json.load(f)
@@ -48,8 +46,10 @@ class QRDaemon:
             if not ret:
                 break
 
+            gray_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+
             # Detect and decode QR codes in the frame
-            self.read_qr_code(frame)
+            self.read_qr_code(gray_frame)
 
             # Wait for 2 seconds before processing the next code
             time.sleep(2)
