@@ -16,8 +16,8 @@ class MemberWidget(customtkinter.CTkFrame):
         self.name_label.grid(row=0, column=0, padx=10, pady=10, sticky="w")
 
         self.signout_button = customtkinter.CTkButton(master=self,
-                                                      text="Sign Out",
-                                                      command=self.button_event,
+                                                      text="Sign In",
+                                                      command=self.sign_in_ph,
                                                       fg_color=Constants.RED_COLOR,
                                                       bg_color="transparent",
                                                       hover_color=Constants.RED_HOVER_COLOR)
@@ -29,5 +29,20 @@ class MemberWidget(customtkinter.CTkFrame):
     def get_name(self):
         return self.name
 
-    def button_event(self):
+    def set_button_state(self, is_signed_in: bool):
+        if is_signed_in:
+            self.signout_button.configure(text="Sign Out",
+                                          fg_color=Constants.GREEN_COLOR,
+                                          hover_color=Constants.GREEN_HOVER_COLOR,
+                                          command=self.sign_out_ph)
+        else:
+            self.signout_button.configure(text="Sign In",
+                                          fg_color=Constants.RED_COLOR,
+                                          hover_color=Constants.RED_HOVER_COLOR,
+                                          command=self.sign_in_ph)
+
+    def sign_in_ph(self):
+        self.master.sign_in(self.id)
+
+    def sign_out_ph(self):
         self.master.sign_out(self.id)

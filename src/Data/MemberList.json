@@ -2,39 +2,56 @@
     "182576": {
         "name": "Ishaan",
         "attendance": {
-            "2023-09-06": "0"
+            "2023-09-06": "0",
+            "2023-09-07": "0"
         }
     },
     "1": {
         "name": "Ishaan",
-        "attendance": {}
+        "attendance": {
+            "2023-09-07": "0"
+        }
     },
     "2": {
         "name": "Gene",
-        "attendance": {}
+        "attendance": {
+            "2023-09-07": "0"
+        }
     },
     "3": {
         "name": "Banana",
-        "attendance": {}
+        "attendance": {
+            "2023-09-07": "0"
+        }
     },
     "4": {
         "name": "Onion",
-        "attendance": {}
+        "attendance": {
+            "2023-09-07": "0"
+        }
     },
     "5": {
         "name": "Mason",
-        "attendance": {}
+        "attendance": {
+            "2023-09-07": "0"
+        }
     },
     "6": {
         "name": "Bob",
-        "attendance": {}
+        "attendance": {
+            "2023-09-07": "0"
+        }
     },
     "7": {
         "name": "Joe",
-        "attendance": {}
+        "attendance": {
+            "2023-09-07": "0"
+        }
     },
     "8": {
         "name": "Bong",
-        "attendance": {}
+        "attendance": {
+            "2023-09-07": "0"
+        }
     }
 }
