@@ -1,6 +1,7 @@
 import customtkinter
 
 from src.UI.Dashboard.DashboardUI import DashboardUI
+from src.UI.MemberManagement.MemberManagementUI import MemberManagementUI
 
 
 class HomeTabView(customtkinter.CTkTabview):
@@ -11,6 +12,7 @@ class HomeTabView(customtkinter.CTkTabview):
         self.add("Manage Members")
 
         self.DashboardTab = DashboardUI(self)
+        self.MemberManagementTab = MemberManagementUI(self)
 
 
 class App(customtkinter.CTk):

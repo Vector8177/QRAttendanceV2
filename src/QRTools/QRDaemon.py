@@ -1,37 +1,32 @@
 import json
-
 import cv2
-from pyzbar.pyzbar import decode
 import time
-
 from src.UI.Dashboard.MembersFrame import MembersFrame
 
 
 class QRDaemon:
     def __init__(self, member_list: MembersFrame):
         self.member_list = member_list
+        self.qr_code_detector = cv2.QRCodeDetector()
 
     # Function to decode and display QR code
     def read_qr_code(self, image):
         # Decode QR code
-        decoded_objects = decode(image)
+        data, bbox, _ = self.qr_code_detector.detectAndDecode(image)
 
-        for obj in decoded_objects:
-            # Extract QR code data
-            qr_data = obj.data.decode('utf-8')
-
-            if self.member_list.check_signed_in(qr_data):
-                self.member_list.sign_out(qr_data)
+        if data:
+            if self.member_list.check_signed_in(data):
+                self.member_list.sign_out(data)
             else:
-                with open("src/Data/MemberList.json") as f:
+                with open("/Users/ishaan/Documents/Projects/QRAttendanceV2/src/Data/MemberList.json") as f:
                     temp = json.load(f)
-                    if not temp.get(qr_data) is None:
-                        self.member_list.sign_in(qr_data)
+                    if not temp.get(data) is None:
+                        self.member_list.sign_in(data)
 
-            print("QR Code Data:", qr_data)
+            print("QR Code Data:", data)
 
             # Display the QR code data on the screen
-            cv2.putText(image, qr_data, (50, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2)
+            cv2.putText(image, data, (50, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2)
             cv2.imshow("QR Code Reader", image)
             cv2.waitKey(0)
 

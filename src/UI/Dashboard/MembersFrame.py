@@ -22,7 +22,7 @@ class MembersFrame(customtkinter.CTkScrollableFrame):
 
     def sign_in(self, id: int):
         name: str
-        with open("src/Data/MemberList.json") as f:
+        with open("/Users/ishaan/Documents/Projects/QRAttendanceV2/src/Data/MemberList.json") as f:
             temp = json.load(f)
             name = temp[id]["name"]
         temp_memwidget = MemberWidget(master=self, id=id, name=name)
@@ -38,12 +38,12 @@ class MembersFrame(customtkinter.CTkScrollableFrame):
                 time_diff = int((time.time() - self.attendance_map[id]) / 60)
                 temp = {}
 
-                with open("src/Data/MemberList.json") as f:
+                with open("/Users/ishaan/Documents/Projects/QRAttendanceV2/src/Data/MemberList.json") as f:
                     temp = json.load(f)
 
                 temp[id]["attendance"][str(datetime.date.today())] = str(time_diff)
 
-                with open("src/Data/MemberList.json", "w") as f:
+                with open("/Users/ishaan/Documents/Projects/QRAttendanceV2/src/Data/MemberList.json", "w") as f:
                     json.dump(temp, f, indent=4)
 
     def sign_out_all(self):
