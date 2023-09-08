@@ -33,16 +33,16 @@ class DashboardUI:
 
 		self.right_frame = RightFrame(self.parent.tab(self.ID), member_section=self.parent.member_section)
 		self.right_frame.grid(row=0, column=3, padx=10, pady=10, sticky="nsew")
-	# self.bob = customtkinter.CTkEntry(master=parent.tab(self.ID))
-	# self.bob.grid(row=0,column=1,sticky="n")
-	#
-	# self.submit = customtkinter.CTkButton(master=parent.tab(self.ID), command=self.add_bit)
-	# self.submit.grid(row=2,column=1)
-	# self.rem = customtkinter.CTkButton(master=parent.tab(self.ID), command=self.remove_bit)
-	# self.rem.grid(row=3, column=1)
+# self.bob = customtkinter.CTkEntry(master=parent.tab(self.ID))
+# self.bob.grid(row=0,column=1,sticky="n")
+#
+# self.submit = customtkinter.CTkButton(master=parent.tab(self.ID), command=self.add_bit)
+# self.submit.grid(row=2,column=1)
+# self.rem = customtkinter.CTkButton(master=parent.tab(self.ID), command=self.remove_bit)
+# self.rem.grid(row=3, column=1)
 
-	# parent.label = customtkinter.CTkLabel(master=parent.tab(self.ID))
-	# parent.label.grid(row=0, column=0, padx=0, pady=0)
+# parent.label = customtkinter.CTkLabel(master=parent.tab(self.ID))
+# parent.label.grid(row=0, colpipumn=0, padx=0, pady=0)
 
 
 class RightFrame(customtkinter.CTkFrame):
