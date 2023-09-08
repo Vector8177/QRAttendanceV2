@@ -17,9 +17,9 @@ class DataGenerationFrame(customtkinter.CTkFrame):
         self.getFromFileText.grid(row=0, column=0, padx=10, pady=10, sticky="nsew")
         self.getFromFile = customtkinter.CTkButton(master=self,
                                                    text="Generate JSON",
-                                                   fg_color="#409DBF",
+                                                   fg_color=Constants.BLUE_COLOR,
                                                    bg_color="transparent",
-                                                   hover_color="#327A94",
+                                                   hover_color=Constants.BLUE_HOVER_COLOR,
                                                    command=self.generate_json)
         self.getFromFile.grid(row=1, column=0, padx=10, pady=10, sticky="s")
 
