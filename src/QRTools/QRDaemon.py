@@ -1,6 +1,8 @@
 import json
 import cv2
 import time
+
+from src.Constants import Constants
 from src.UI.Dashboard.MembersFrame import MembersFrame
 
 
@@ -18,7 +20,7 @@ class QRDaemon:
             if self.member_list.check_signed_in(data):
                 self.member_list.sign_out(data)
             else:
-                with open(MembersFrame.JSON_PATH) as f:
+                with open(Constants.JSON_PATH) as f:
                     temp = json.load(f)
                     if not temp.get(data) is None:
                         self.member_list.sign_in(data)

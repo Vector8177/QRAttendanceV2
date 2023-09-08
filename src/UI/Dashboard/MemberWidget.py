@@ -1,5 +1,7 @@
 import customtkinter
 
+from src.Constants import Constants
+
 
 class MemberWidget(customtkinter.CTkFrame):
     def __init__(self, master, id, name, **kwargs):
@@ -16,9 +18,9 @@ class MemberWidget(customtkinter.CTkFrame):
         self.signout_button = customtkinter.CTkButton(master=self,
                                                       text="Sign Out",
                                                       command=self.button_event,
-                                                      fg_color="#D63D3D",
+                                                      fg_color=Constants.RED_COLOR,
                                                       bg_color="transparent",
-                                                      hover_color="#BC3535")
+                                                      hover_color=Constants.RED_HOVER_COLOR)
         self.signout_button.grid(row=0, column=2, padx=10, pady=10, sticky="e")
 
     def get_id(self):

@@ -2,6 +2,7 @@ import json
 
 import customtkinter
 
+from src.Constants import Constants
 from src.UI.Dashboard.MembersFrame import MembersFrame
 
 
@@ -29,7 +30,7 @@ class DataGenerationFrame(customtkinter.CTkFrame):
         temp = [s.split("\t") for s in f.split("\n")]
 
         jsonf = {}
-        with open(MembersFrame.JSON_PATH) as f:
+        with open(Constants.JSON_PATH) as f:
             jsonf = json.load(f)
 
         for bit in temp:
@@ -41,5 +42,5 @@ class DataGenerationFrame(customtkinter.CTkFrame):
                 "attendance": {}
             }
 
-        with open(MembersFrame.JSON_PATH, "w") as f:
+        with open(Constants.JSON_PATH, "w") as f:
             json.dump(jsonf, f, indent=4)

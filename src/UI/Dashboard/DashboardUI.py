@@ -1,5 +1,6 @@
 import customtkinter
 
+from src.Constants import Constants
 from src.QRTools.QRDaemon import QRDaemon
 from src.UI.Dashboard.MembersFrame import MembersFrame
 
@@ -23,9 +24,9 @@ class DashboardUI:
 
         self.sign_out_all = customtkinter.CTkButton(master=parent.tab(self.ID),
                                                     text="Sign Out All",
-                                                    fg_color="#D63D3D",
+                                                    fg_color=Constants.RED_COLOR,
                                                     bg_color="transparent",
-                                                    hover_color="#BC3535",
+                                                    hover_color=Constants.RED_HOVER_COLOR,
                                                     command=self.parent.member_section.sign_out_all)
         self.sign_out_all.grid(row=3, column=0, sticky="sew", pady=(10, 10), padx=15)
 
@@ -35,9 +36,9 @@ class DashboardUI:
 
         self.qrb = customtkinter.CTkButton(master=parent.tab(self.ID),
                                            text="QR",
-                                           fg_color="#D63D3D",
+                                           fg_color=Constants.BLUE_COLOR,
                                            bg_color="transparent",
-                                           hover_color="#BC3535",
+                                           hover_color=Constants.BLUE_HOVER_COLOR,
                                            command=self.launch_qr)
         self.qrb.grid(row=1, column=1, padx=10, pady=10)
         # self.bob = customtkinter.CTkEntry(master=parent.tab(self.ID))
@@ -82,9 +83,9 @@ class ManualSignIn(customtkinter.CTkFrame):
 
         self.submit_button = customtkinter.CTkButton(master=self,
                                                      text="Sign In",
-                                                     fg_color="#36C170",
+                                                     fg_color=Constants.GREEN_COLOR,
                                                      bg_color="transparent",
-                                                     hover_color="#30A15F",
+                                                     hover_color=Constants.GREEN_HOVER_COLOR,
                                                      command=self.submit_event)
         self.submit_button.grid(row=2, column=0, padx=25, pady=(10, 15))
 
