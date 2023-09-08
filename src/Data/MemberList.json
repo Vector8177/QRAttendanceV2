@@ -1,8 +1,4 @@
 {
-    "1": {
-        "name": "V\u00edtor Kanna",
-        "attendance": {}
-    },
     "2": {
         "name": "Jream Ferchar",
         "attendance": {}
@@ -51,7 +47,9 @@
     },
     "13": {
         "name": "Nadja Manuel",
-        "attendance": {}
+        "attendance": {
+            "2023-09-08": "0"
+        }
     },
     "14": {
         "name": "Annabeth Achim",
@@ -125,7 +123,9 @@
     },
     "29": {
         "name": "Johnny Colby",
-        "attendance": {}
+        "attendance": {
+            "2023-09-08": "0"
+        }
     },
     "30": {
         "name": "Lore Tina",
@@ -145,7 +145,9 @@
     },
     "33": {
         "name": "Suriya Terell",
-        "attendance": {}
+        "attendance": {
+            "2023-09-08": "0"
+        }
     },
     "34": {
         "name": "Hj\u01ebrd\u00eds \u00c9rico",
@@ -179,6 +181,12 @@
     },
     "40": {
         "name": "Bomilcar Marie-Christine",
+        "attendance": {
+            "2023-09-08": "0"
+        }
+    },
+    "182576": {
+        "name": "Ishaan Masilamony",
         "attendance": {
             "2023-09-08": "0"
         }
