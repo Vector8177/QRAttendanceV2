@@ -34,8 +34,8 @@ class MembersFrame(customtkinter.CTkScrollableFrame):
         with open(Constants.JSON_PATH) as f:
             temp = json.load(f)
             name = temp[id]["name"]
-        temp_memwidget = MemberWidget(master=self, id=id, name=name, fg_color="blue")
-        temp_memwidget.grid(row=int(len(self.member_list) / 4), column=len(self.member_list) % 4, pady=10, padx=10,
+        temp_memwidget = MemberWidget(master=self, id=id, name=name)
+        temp_memwidget.grid(row=int(len(self.member_list) / 4), column=len(self.member_list) % 4, pady=5, padx=5,
                             sticky="ew")
         self.member_list.append(temp_memwidget)
         # self.attendance_map[id] = int(time.time())

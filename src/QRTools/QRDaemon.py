@@ -28,13 +28,12 @@ class QRDaemon:
             print("QR Code Data:", data)
 
             # Display the QR code data on the screen
-            cv2.putText(image, data, (50, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2)
-            cv2.imshow("QR Code Reader", image)
+
             cv2.waitKey(0)
 
     def main(self):
         # Initialize the camera or read a video file
-        cap = cv2.VideoCapture(0)  # Change to the appropriate camera index or video file path
+        cap = cv2.VideoCapture(1)  # Change to the appropriate camera index or video file path
 
         while True:
             # Read a frame from the camera or video file
