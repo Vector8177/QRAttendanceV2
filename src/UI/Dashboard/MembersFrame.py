@@ -23,7 +23,7 @@ class MembersFrame(customtkinter.CTkScrollableFrame):
             for key in temp.keys():
                 self.add_member_widget(key)
 
-        self.grid_columnconfigure(0, weight=1)
+        self.grid_columnconfigure((0, 1, 2, 3), weight=1)
 
     def check_signed_in(self, id: str):
         a = self.attendance_map.get(id)
@@ -34,22 +34,22 @@ class MembersFrame(customtkinter.CTkScrollableFrame):
         with open(Constants.JSON_PATH) as f:
             temp = json.load(f)
             name = temp[id]["name"]
-        temp_memwidget = MemberWidget(master=self, id=id, name=name)
-        temp_memwidget.grid(row=len(self.member_list), column=0, pady=5, sticky="ew")
+        temp_memwidget = MemberWidget(master=self, id=id, name=name, fg_color="blue")
+        temp_memwidget.grid(row=int(len(self.member_list) / 4), column=len(self.member_list) % 4, pady=10, padx=10,
+                            sticky="ew")
         self.member_list.append(temp_memwidget)
         # self.attendance_map[id] = int(time.time())
 
-    def sign_in(self, id: int):
-        self.attendance_map[id] = int(time.time())
+    def sign_in(self, m_id: int):
+        self.attendance_map[m_id] = int(time.time())
         for member in self.member_list:
-            if member.get_id() == id:
+            if member.get_id() == m_id:
                 member.set_button_state(True)
 
-    def sign_out(self, id: int):
+    def sign_out(self, m_id: int):
         for m_widget in self.member_list:
-            if m_widget.get_id() == id:
-
-                time_diff = int((time.time() - self.attendance_map[id]) / 60)
+            if m_widget.get_id() == m_id and self.check_signed_in(m_id):
+                time_diff = int((time.time() - self.attendance_map[m_id]) / 60)
                 temp = {}
 
                 m_widget.set_button_state(False)
@@ -57,7 +57,7 @@ class MembersFrame(customtkinter.CTkScrollableFrame):
                 with open(Constants.JSON_PATH) as f:
                     temp = json.load(f)
 
-                temp[id]["attendance"][str(datetime.date.today())] = str(time_diff)
+                temp[m_id]["attendance"][str(datetime.date.today())] = str(time_diff)
 
                 with open(Constants.JSON_PATH, "w") as f:
                     json.dump(temp, f, indent=4)

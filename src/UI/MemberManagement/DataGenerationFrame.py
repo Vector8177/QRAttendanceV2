@@ -2,6 +2,7 @@ import json
 
 import customtkinter
 
+from src.Constants import Constants
 from src.UI.Dashboard.MembersFrame import MembersFrame
 
 
@@ -16,9 +17,9 @@ class DataGenerationFrame(customtkinter.CTkFrame):
         self.getFromFileText.grid(row=0, column=0, padx=10, pady=10, sticky="nsew")
         self.getFromFile = customtkinter.CTkButton(master=self,
                                                    text="Generate JSON",
-                                                   fg_color="#409DBF",
+                                                   fg_color=Constants.BLUE_COLOR,
                                                    bg_color="transparent",
-                                                   hover_color="#327A94",
+                                                   hover_color=Constants.BLUE_HOVER_COLOR,
                                                    command=self.generate_json)
         self.getFromFile.grid(row=1, column=0, padx=10, pady=10, sticky="s")
 
@@ -29,7 +30,7 @@ class DataGenerationFrame(customtkinter.CTkFrame):
         temp = [s.split("\t") for s in f.split("\n")]
 
         jsonf = {}
-        with open(MembersFrame.JSON_PATH) as f:
+        with open(Constants.JSON_PATH) as f:
             jsonf = json.load(f)
 
         for bit in temp:
@@ -41,5 +42,5 @@ class DataGenerationFrame(customtkinter.CTkFrame):
                 "attendance": {}
             }
 
-        with open(MembersFrame.JSON_PATH, "w") as f:
+        with open(Constants.JSON_PATH, "w") as f:
             json.dump(jsonf, f, indent=4)

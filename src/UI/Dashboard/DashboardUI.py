@@ -11,7 +11,7 @@ class DashboardUI:
     def __init__(self, parent: customtkinter.CTkTabview):
         self.ID = "Dashboard"
         self.parent = parent
-        self.parent.tab(self.ID).grid_columnconfigure((0, 1, 2), weight=1, pad=10)
+        self.parent.tab(self.ID).grid_columnconfigure((0, 1, 2, 3), weight=1, pad=10)
         self.parent.tab(self.ID).grid_rowconfigure(0, weight=1)
 
         self.parent.member_section = MembersFrame(master=parent.tab(self.ID))
@@ -20,7 +20,8 @@ class DashboardUI:
                                         sticky="nsew",
                                         rowspan=2,
                                         pady=(15, 0),
-                                        padx=15)
+                                        padx=15,
+                                        columnspan=3)
 
         self.sign_out_all = customtkinter.CTkButton(master=parent.tab(self.ID),
                                                     text="Sign Out All",
@@ -28,11 +29,11 @@ class DashboardUI:
                                                     bg_color="transparent",
                                                     hover_color="#BC3535",
                                                     command=self.parent.member_section.sign_out_all)
-        self.sign_out_all.grid(row=3, column=0, sticky="sew", pady=(10, 10), padx=15)
+        self.sign_out_all.grid(row=3, column=1, sticky="sew", pady=(10, 10), padx=15)
 
         self.manual_sign_in = ManualSignIn(member_section=self.parent.member_section,
                                            master=parent.tab(self.ID))
-        self.manual_sign_in.grid(row=0, column=1, pady=10, padx=10, sticky="new")
+        self.manual_sign_in.grid(row=0, column=3, pady=10, padx=10, sticky="new")
 
         self.qrb = customtkinter.CTkButton(master=parent.tab(self.ID),
                                            text="QR",
@@ -40,7 +41,7 @@ class DashboardUI:
                                            bg_color="transparent",
                                            hover_color="#BC3535",
                                            command=self.launch_qr)
-        self.qrb.grid(row=1, column=1, padx=10, pady=10)
+        self.qrb.grid(row=1, column=3, padx=10, pady=10)
         # self.bob = customtkinter.CTkEntry(master=parent.tab(self.ID))
         # self.bob.grid(row=0,column=1,sticky="n")
         #
