@@ -1,3 +1,5 @@
+from queue import Queue
+
 import customtkinter
 
 from src.UI.Dashboard.DashboardUI import DashboardUI
@@ -19,7 +21,7 @@ class App(customtkinter.CTk):
     def __init__(self):
         super().__init__()
 
-        self.title("my app")
+        self.title("QR Attendance")
         self.geometry("1600x900")
         self.minsize(800,450)
         self.grid_columnconfigure(0, weight=1)

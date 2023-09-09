@@ -10,6 +10,7 @@ class Constants:
 
 	# Specify the path to the JSON file
 	JSON_PATH = os.path.join(src_dir, 'src', 'Data', 'MemberList.json')
+	RESOURCES_PATH = os.path.join(src_dir, 'src', 'Resources')
 
 	RED_COLOR = "#D63D3D"
 	RED_HOVER_COLOR = "#BC3535"
