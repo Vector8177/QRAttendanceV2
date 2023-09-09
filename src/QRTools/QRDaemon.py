@@ -37,24 +37,26 @@ class QRDaemon:
 
     def main(self):
         # Initialize the camera or read a video file
+        itime = time.time()
         cap = cv2.VideoCapture(0)  # Change to the appropriate camera index or video file path
+        print(time.time() - itime)
 
         while True:
             # Read a frame from the camera or video file
             ret, frame = cap.read()
 
+            gray_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+
             if not ret:
                 break
             if not self.img_q.full():
-                self.img_q.put(frame)
-
-            gray_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+                self.img_q.put(gray_frame)
 
             # Detect and decode QR codes in the frame
             self.read_qr_code(gray_frame)
 
             # Wait for 2 seconds before processing the next code
-            time.sleep(0.5)
+            time.sleep(0.05)
 
             # Close the displayed window if 'q' key is pressed
             if cv2.waitKey(1) & 0xFF == ord('q'):

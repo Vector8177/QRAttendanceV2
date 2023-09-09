@@ -73,8 +73,8 @@ class RightFrame(customtkinter.CTkFrame):
         self.image_frame.grid_rowconfigure(0, weight=1)
 
         self.image_w = customtkinter.CTkImage(
-            light_image=Image.open(os.path.join(Constants.RESOURCES_PATH, 'blank_img.jpg')),
-            size=(600, 600))
+            light_image=Image.open(os.path.join(Constants.RESOURCES_PATH, 'blank_img.png')),
+            size=(20, 20))
         self.img_label = customtkinter.CTkLabel(self.image_frame, image=self.image_w, text="")
         self.img_label.grid(row=0, column=0, padx=5, pady=10, sticky="")
 
@@ -88,19 +88,21 @@ class RightFrame(customtkinter.CTkFrame):
         self.qrb.grid(row=2, column=0, padx=10, pady=10)
 
     def read_cam_img(self):
-        time.sleep(5)
-        print("done waiting")
-        while not self.img_queue.empty():
+        while True:
+            if self.img_queue.full():
+                continue
             self.image_w.configure(light_image=Image.fromarray(self.img_queue.get()))
-            time.sleep(0.5)
+            self.img_label.configure(image=self.image_w, text="")
+            time.sleep(0.05)
 
     def launch_qr(self):
+        self.image_w.configure(size=(400,400))
         qr_daemon = QRDaemon(member_list=self.member_section, img_q=self.img_queue)
         qr_daemon_thread = threading.Thread(target=qr_daemon.main)
         qr_daemon_thread.daemon = True
         qr_daemon_thread.start()
 
-        img_update_thread = threading.Thread(target=self.read_cam_img())
+        img_update_thread = threading.Thread(target=self.read_cam_img)
         img_update_thread.daemon = True
         img_update_thread.start()
 
