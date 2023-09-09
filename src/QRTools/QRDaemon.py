@@ -1,4 +1,6 @@
 import json
+from queue import Queue
+
 import cv2
 import time
 
@@ -7,9 +9,10 @@ from src.UI.Dashboard.MembersFrame import MembersFrame
 
 
 class QRDaemon:
-    def __init__(self, member_list: MembersFrame):
+    def __init__(self, member_list: MembersFrame, img_q: Queue):
         self.member_list = member_list
         self.qr_code_detector = cv2.QRCodeDetector()
+        self.img_q = img_q
 
     # Function to decode and display QR code
     def read_qr_code(self, image):
@@ -33,7 +36,7 @@ class QRDaemon:
 
     def main(self):
         # Initialize the camera or read a video file
-        cap = cv2.VideoCapture(1)  # Change to the appropriate camera index or video file path
+        cap = cv2.VideoCapture(0)  # Change to the appropriate camera index or video file path
 
         while True:
             # Read a frame from the camera or video file
@@ -41,6 +44,8 @@ class QRDaemon:
 
             if not ret:
                 break
+            if self.img_q.not_full:
+                self.img_q.put(frame)
 
             gray_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
 
