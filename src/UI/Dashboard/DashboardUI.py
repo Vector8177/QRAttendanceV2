@@ -88,10 +88,11 @@ class RightFrame(customtkinter.CTkFrame):
         self.qrb.grid(row=2, column=0, padx=10, pady=10)
 
     def read_cam_img(self):
-        while True:
-            if not self.img_queue.empty():
-                self.image_w.configure(light_image=Image.fromarray(self.img_queue.get()))
-                time.sleep(0.1)
+        time.sleep(5)
+        print("done waiting")
+        while not self.img_queue.empty():
+            self.image_w.configure(light_image=Image.fromarray(self.img_queue.get()))
+            time.sleep(0.5)
 
     def launch_qr(self):
         qr_daemon = QRDaemon(member_list=self.member_section, img_q=self.img_queue)
