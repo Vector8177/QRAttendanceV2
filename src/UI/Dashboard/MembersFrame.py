@@ -50,12 +50,22 @@ class MembersFrame(customtkinter.CTkScrollableFrame):
         for m_widget in self.member_list:
             if m_widget.get_id() == m_id and self.check_signed_in(m_id):
                 time_diff = int((time.time() - self.attendance_map[m_id]) / 60)
+                self.attendance_map.pop(m_id)
                 temp = {}
 
                 m_widget.set_button_state(False)
 
                 with open(Constants.JSON_PATH) as f:
                     temp = json.load(f)
+
+                t_dates = []
+                with open(Constants.MEETING_DATES_PATH) as f:
+                    t_dates = f.readlines()
+
+                if not str(datetime.date.today()) in t_dates:
+                    t_dates.append(str(datetime.date.today()))
+                    with open(Constants.MEETING_DATES_PATH, "w") as f:
+                        f.writelines(t_dates)
 
                 temp[m_id]["attendance"][str(datetime.date.today())] = str(time_diff)
 
