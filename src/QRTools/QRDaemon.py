@@ -27,6 +27,7 @@ class QRDaemon:
                     temp = json.load(f)
                     if not temp.get(data) is None:
                         self.member_list.sign_in(data)
+            time.sleep(2)
 
             print("QR Code Data:", data)
 
@@ -44,7 +45,7 @@ class QRDaemon:
 
             if not ret:
                 break
-            if self.img_q.not_full:
+            if not self.img_q.full():
                 self.img_q.put(frame)
 
             gray_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
@@ -53,7 +54,7 @@ class QRDaemon:
             self.read_qr_code(gray_frame)
 
             # Wait for 2 seconds before processing the next code
-            time.sleep(2)
+            time.sleep(0.5)
 
             # Close the displayed window if 'q' key is pressed
             if cv2.waitKey(1) & 0xFF == ord('q'):
