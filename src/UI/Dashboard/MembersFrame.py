@@ -20,6 +20,9 @@ class MembersFrame(customtkinter.CTkScrollableFrame):
         with open(Constants.JSON_PATH) as f:
             temp = json.load(f)
 
+            if len(temp.keys()) == 0:
+                return
+
             for key in temp.keys():
                 self.add_member_widget(key)
 
