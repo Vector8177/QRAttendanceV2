@@ -23,7 +23,7 @@ The attendance overview, by default, is setup to display all stored members in r
 
 In the upper right hand corner of this tab, you can find a textbox for manual signing that users can enter their ID number into to sign themselves in (but not sign themselves out). Under this, you will see a button for launching the QR scanner. Once you hit this button, the QR scanner will launch and a camera preview will be visible on the screen (if you are using an external camera, this may take up 25-30 seconds). Then, each user can scan a QR code (that contains their ID number) to sign in AND sign out.
 
-**IMPORTANT NOTE:** When logging the attendance for each member, the system will only take the most recent session into account, so ensure that you are only signing in and out once!
+**IMPORTANT NOTE**: When logging the attendance for each member, the system will only take the most recent session into account, so ensure that you are only signing in and out once!
 
 Lastly, there is also a "Sign Out All" button that will sign everyone out and log attendance.
 
