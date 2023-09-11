@@ -5,6 +5,7 @@ import time
 
 import customtkinter
 
+from src.CloudUpdate import UpdateSheet
 from src.Constants import Constants
 from src.UI.Dashboard.MemberWidget import MemberWidget
 
@@ -78,3 +79,5 @@ class MembersFrame(customtkinter.CTkScrollableFrame):
     def sign_out_all(self):
         for m_widget in self.member_list:
             self.sign_out(m_widget.get_id())
+
+        UpdateSheet.update_sheet()
