@@ -5,6 +5,7 @@ import os.path
 import customtkinter
 import csv
 
+from src.CloudUpdate import UpdateSheet
 from src.Constants import Constants
 from src.UI.Dashboard.MembersFrame import MembersFrame
 
@@ -63,15 +64,15 @@ class DataGenerationFrame(customtkinter.CTkFrame):
             json.dump(jsonf, f, indent=4)
 
 
-def generate_csv():
-    list_fin = []
+def flatten_json():
     fields = []
+    list_fin = []
     with open(Constants.MEETING_DATES_PATH) as file:
         fields = file.readlines()
     with open(Constants.JSON_PATH) as f:
         temp: {} = json.load(f)
         for key, value in temp.items():
-            t_arr = [key, value["name"]]
+            t_arr = [value["name"], key]
 
             for d in fields:
                 if d in value["attendance"].keys():
@@ -80,8 +81,16 @@ def generate_csv():
                     t_arr.append("0")
 
             list_fin.append(t_arr)
-    fields.insert(0, "Name")
     fields.insert(0, "ID")
+    fields.insert(0, "Name")
+
+    list_fin.insert(0, fields)
+
+    return list_fin
+
+
+def generate_csv():
+    list_fin = flatten_json()
 
     yr_str = ""
 
@@ -102,8 +111,9 @@ def generate_csv():
     with open(file_address_current, "w") as f:
         csvwriter = csv.writer(f)
 
-        csvwriter.writerow(fields)
         csvwriter.writerows(list_fin)
+
+    UpdateSheet.update_sheet()
 
 
 def clear_json_pwd():
@@ -118,4 +128,4 @@ def clear_json_pwd():
 
 def clear_json():
     with open(Constants.JSON_PATH, "w") as f:
-        json.dump({},f,indent=4)
+        json.dump({}, f, indent=4)
