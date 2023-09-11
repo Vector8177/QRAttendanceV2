@@ -13,6 +13,8 @@ class Constants:
     MEETING_DATES_PATH = os.path.join(src_dir, 'src', 'Data', 'AllDates.txt')
     RESOURCES_PATH = os.path.join(src_dir, 'src', 'Resources')
     DOWNLOADS_PATH = os.path.join(os.path.expanduser("~"), "Downloads")
+    AUTH_PATH = os.path.join(src_dir, 'src', 'Auth', 'sheets_key.json')
+
 
     RED_COLOR = "#D63D3D"
     RED_HOVER_COLOR = "#BC3535"

@@ -30,9 +30,9 @@ class DashboardUI:
 
         self.sign_out_all = customtkinter.CTkButton(master=parent.tab(self.ID),
                                                     text="Sign Out All",
-                                                    fg_color=Constants.RED_COLOR,
+                                                    fg_color="#D63D3D",
                                                     bg_color="transparent",
-                                                    hover_color=Constants.RED_HOVER_COLOR,
+                                                    hover_color="#BC3535",
                                                     command=self.parent.member_section.sign_out_all)
         self.sign_out_all.grid(row=3, column=1, sticky="sew", pady=(10, 10), padx=15)
 
@@ -80,9 +80,9 @@ class RightFrame(customtkinter.CTkFrame):
 
         self.qrb = customtkinter.CTkButton(master=self,
                                            text="QR",
-                                           fg_color=Constants.BLUE_COLOR,
+                                           fg_color="#D63D3D",
                                            bg_color="transparent",
-                                           hover_color=Constants.BLUE_HOVER_COLOR,
+                                           hover_color="#BC3535",
                                            command=self.launch_qr)
 
         self.qrb.grid(row=2, column=0, padx=10, pady=10)
