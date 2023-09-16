@@ -2,6 +2,11 @@
 
 This project is a QR-based attendance system that utilitizes JSON data storage and allows for exports to CSV files
 
+![Homepage](https://github.com/StarkOdinson612/QRAttendanceV2/assets/61901829/3288d2ab-ae97-406d-9be0-71fe4a96b354)
+
+![Member Management](https://github.com/StarkOdinson612/QRAttendanceV2/assets/61901829/b963d890-6e8f-49a9-950e-b3c5c10c2be1)
+
+
 ## Installation and Usage
 
 Simply install the latest release (Only Windows supported as of now), unzip the zip file, and run the main.exe file. 
@@ -23,7 +28,7 @@ The attendance overview, by default, is setup to display all stored members in r
 
 In the upper right hand corner of this tab, you can find a textbox for manual signing that users can enter their ID number into to sign themselves in (but not sign themselves out). Under this, you will see a button for launching the QR scanner. Once you hit this button, the QR scanner will launch and a camera preview will be visible on the screen (if you are using an external camera, this may take up 25-30 seconds). Then, each user can scan a QR code (that contains their ID number) to sign in AND sign out.
 
-<h3>IMPORTANT NOTE:</h3> When logging the attendance for each member, the system will only take the most recent session into account, so ensure that you are only signing in and out once!
+_**!!!IMPORTANT NOTE!!!**_ When logging the attendance for each member, the system will only take the most recent session into account, so ensure that you are only signing in and out once!
 
 Lastly, there is also a "Sign Out All" button that will sign everyone out and log attendance.
 
