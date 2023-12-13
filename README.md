@@ -39,7 +39,8 @@ This is the place for managing the member data or viewing individual member atte
 
 On the left side, you will see a large textbox, this is where you will enter member info to be added to the JSON file. **DO NOT add existing members as this will wipe out their attendance data**. Data is to be entered in this format
 
-\<id>    \<member>\n
+\<id>    \<member>
+
 \<id>    \<member>
 
 The separator between id and member _must_ be a tab character. If you are directly copy-pasting from Google Sheets or Excel, this is the default way that the data will be pasted so you do not need to worry about this.
