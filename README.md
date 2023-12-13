@@ -39,14 +39,14 @@ This is the place for managing the member data or viewing individual member atte
 
 On the left side, you will see a large textbox, this is where you will enter member info to be added to the JSON file. **DO NOT add existing members as this will wipe out their attendance data**. Data is to be entered in this format
 
-<id>  <member>
-<id>  <member>
+\<id>    \<member>
+\<id>    \<member>
 
 The separator between id and member _must_ be a tab character. If you are directly copy-pasting from Google Sheets or Excel, this is the default way that the data will be pasted so you do not need to worry about this.
 
 After you have entered the member data, simply hit the "Generate JSON" button and new entries will be generated for the members. 
 
-You will also see a "Export JSON" button, which will export the attendance data into your downloads folder in a directory called "Attendance Data - <year>-<year>" where <year>-<year> represents the current academic year, i.e. July 2023 - June 2024, it will say 'Attendance Records - 2023-2024. Each individual csv file will be named according to the date of its creation in its respective directory.
+You will also see a "Export JSON" button, which will export the attendance data into your downloads folder in a directory called "Attendance Data - \<year>-\<year>" where \<year>-\<year> represents the current academic year, i.e. July 2023 - June 2024, it will say 'Attendance Records - 2023-2024. Each individual csv file will be named according to the date of its creation in its respective directory.
 
 There is also a "Clear JSON" button that will completely wipe the JSON file after asking for a password confirmation. In order to edit the password, however, you will have to alter the source code and then rebuild the project using cxFreeze.
 
